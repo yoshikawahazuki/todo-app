@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo list</title>
+    <style>
+        .container{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        ul{
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        li:hover{
+            background: #eee;
+        }
+
+        a{
+            color: white;
+            background-color: #e74c3c;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        a:hover{
+            opacity: 0.8;
+        }
+
+        input[type=checkbox]{
+            width: 18px;
+            height: 18px;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            cursor: pointer;
+            vertical-align: middle;
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul style="color:red; list-style:none; padding:0; margin-bottom:10px;">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <h1>ToDoリスト</h1>
+
+        <form action="/add" method="post">
+            <input type="text" name="task" placeholder="タスクを入力">
+            <button type="submit">追加</button>
+        </form>
+        {% if tasks|length == 0 %}
+            <p>タスクがありません</p>
+        {% else %}
+            <ul>
+                {% for task in tasks %}
+                    <li>
+                       <form action="/toggle/{{ loop.index0 }}" method="get" style="display:inline;">
+                        <input type="checkbox" onchange="location.href='/toggle/{{ task.id }}'" {% if task.done %}checked{% endif %}>
+                        </form>
+
+                        <span style="text-decoration: {{ 'line-through' if task.done else 'none' }}; margin-left: 8px;">
+                            {{ task.text }}
+                        </span>
+
+                        <a href = "/delete/{{ task.id }}" style="color: white; background-color: #e74c3c; padding: 5px 10px; border-radius: 5px; text-decoration: none; margin-left: 10px;">削除</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

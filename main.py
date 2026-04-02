@@ -3,7 +3,7 @@ import json
 try :
     with open("tasks.json", "r") as f:
         tasks = json.load(f)
-except:
+except FileNotFoundError:
     tasks = []
 
 while True:
