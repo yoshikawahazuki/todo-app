@@ -16,12 +16,11 @@
 - Git / GitHub
 
 ## デモ
-※GIFやスクリーンショットを `images/` フォルダに置いてください。
-
-![タスク追加](./images/add_task.gif)
+![スクリーンショット](./images/todo-app_image.png)
 
 ## 実行方法
 1. リポジトリをクローン
+[GitHub リポジトリはこちら](https://github.com/yoshikawahazuki/todo-app.git)
 ```bash
 git clone https://github.com/yoshikawahazuki/todo-app.git
 cd todo-app
