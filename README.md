@@ -18,27 +18,29 @@
 ## デモ
 ![スクリーンショット](./images/todo-app_image.png)
 
-## 実行方法
-1. リポジトリをクローン
-[GitHub リポジトリはこちら](https://github.com/hazukiyoshikawa/todo-app.git)
-```bash
-git clone https://github.com/hazukiyoshikawa/todo-app.git
-cd todo-app
-```
-2. 仮想環境を作成して有効化
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-3. Flask をインストール
-```bash
-pip install flask
-```
-4. サーバーを起動
-```bash
-python3 app.py
-```
-5. ブラウザでアクセス
-```
-http://127.0.0.1:5000
-```
+## 🌐 デモURL
+
+実際のアプリはこちらから利用できます👇  
+https://todo-app-ao4q.onrender.com/
+
+---
+## 💡 工夫した点
+
+- JSONファイルを用いて簡易的なデータ永続化を実装
+- 入力バリデーションを追加し、空タスクの登録を防止
+- 完了状態を視覚的に分かるよう取り消し線で表現
+
+---
+
+## ⚠️ 注意事項
+
+- このアプリは学習目的で作成しているため、データベースは使用していません
+- Renderの仕様上、再起動時にデータが初期化される場合があります
+
+---
+
+## 🚀 今後の改善予定
+
+- データベース（SQLite/PostgreSQL）への移行
+- ユーザーごとのタスク管理機能
+- UI改善（レスポンシブ対応）
